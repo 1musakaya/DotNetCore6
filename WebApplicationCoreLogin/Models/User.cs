@@ -17,9 +17,11 @@ namespace WebApplicationCoreLogin.Models
         [StringLength(30)]
         public string UserName { get; set; }
 
-        [Required,StringLength(16)]
+        [Required,StringLength(100)]
         public string Password { get; set; }
         public bool Activate { get; set; }
         public DateTime CreatedDate { get; set; }= DateTime.Now;
+        [Required,StringLength(50)]
+        public string Role { get; set; }
     }
 }

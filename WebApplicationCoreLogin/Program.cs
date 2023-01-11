@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using WebApplicationCoreLogin.Models;
 
@@ -8,6 +9,19 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 builder.Services.AddDbContext<DatabaseContext>
     (o =>o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(o => {
+    o.Cookie.Name = "AuthCookie";
+    o.ExpireTimeSpan=TimeSpan.FromDays(1);
+    o.SlidingExpiration = false;
+    o.LoginPath = "/Account/Login";
+    o.LogoutPath = "/Account/Logout";
+    o.AccessDeniedPath = "/Home/AccsessDenied";
+    
+    
+    });
+
 
 var app = builder.Build();
 
@@ -23,6 +37,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
