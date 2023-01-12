@@ -100,8 +100,24 @@ namespace WebApplicationCoreLogin.Controllers
         [AllowAnonymous]
         public IActionResult Profil()
         {
-
+            Guid id = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            User user = db.Users.SingleOrDefault(x => x.Id == id);
+            ViewData["adsoyad"] = user.Name;
             return View();
+        }
+        [HttpPost]
+        public IActionResult AdSoyadKaydet(string adsoyad)
+        {
+            if (ModelState.IsValid)
+            {
+                Guid id = new Guid(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                User user=db.Users.SingleOrDefault(x => x.Id == id); 
+                
+                user.Name=adsoyad;
+                db.SaveChanges();
+                return RedirectToAction("Profil");
+            }
+            return View("Profil");
         }
         [HttpPost]
         [AllowAnonymous]

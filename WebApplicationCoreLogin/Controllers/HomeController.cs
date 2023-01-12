@@ -19,6 +19,13 @@ namespace WebApplicationCoreLogin.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
+
+        public IActionResult AccsessDenied()
+        {
+            return View();
+        }
+
 
         public IActionResult Privacy()
         {
@@ -30,5 +37,6 @@ namespace WebApplicationCoreLogin.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        
     }
 }
