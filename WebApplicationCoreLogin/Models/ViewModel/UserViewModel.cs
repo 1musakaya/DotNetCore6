@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApplicationCoreLogin.Models
+namespace WebApplicationCoreLogin.Models.ViewModel
 {
-    [Table("User")]
-    public class User
+    public class UserViewModel
     {
-        [Key]
         public Guid Id { get; set; }
 
         [StringLength(20)]
@@ -16,13 +13,10 @@ namespace WebApplicationCoreLogin.Models
         [StringLength(30)]
         public string UserName { get; set; }
 
-        [Required,StringLength(100)]
+        [Required, StringLength(100)]
         public string Password { get; set; }
         public bool Activate { get; set; } = false;
-        public DateTime CreatedDate { get; set; }=DateTime.Now;
-
-        [StringLength(255)]
-        public string ProfilResimDosyasi { get; set; } = "user_1.jpg";
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
 
         [Required, StringLength(50)]
         public string Role { get; set; } = "user";

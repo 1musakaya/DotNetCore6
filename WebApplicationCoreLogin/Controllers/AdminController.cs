@@ -8,7 +8,6 @@ namespace WebApplicationCoreLogin.Controllers
     {
         public IActionResult Index()
         {
-
             return View();
         }
     }

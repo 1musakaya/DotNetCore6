@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace WebApplicationCoreLogin.Models
 {
@@ -6,7 +7,7 @@ namespace WebApplicationCoreLogin.Models
     {
         public DatabaseContext(DbContextOptions options):base(options)
         {
-            
+
         }
         public virtual DbSet<User> Users { get; set; }
 

@@ -19,24 +19,23 @@ namespace WebApplicationCoreLogin.Controllers
         {
             return View();
         }
-        [AllowAnonymous]
 
-        public IActionResult AccsessDenied()
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
         {
             return View();
         }
-
 
         public IActionResult Privacy()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        
     }
 }
